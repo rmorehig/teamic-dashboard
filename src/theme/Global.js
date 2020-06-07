@@ -40,5 +40,10 @@ const GlobalStyle = createGlobalStyle`
   li {
     list-style: none;
   }
+  h1{
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0;
+  }
 `
 export default GlobalStyle

@@ -10,8 +10,8 @@ const AddIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M7.25 7.25V2H8.75V7.25H14V8.75H8.75V14H7.25V8.75H2V7.25H7.25Z"
       fill="#7E858E"
     />
@@ -41,9 +41,14 @@ const MenuRow = styled.li`
   align-items: center;
   justify-content: space-between;
   border-left: 3px solid transparent;
+  &:hover,
+  .active {
+    color: #0b69ff;
+  }
 `
 const MainMenuRow = styled(MenuRow)`
-  &:hover {
+  &:hover,
+  .active {
     border-color: #0b69ff;
     background: rgba(126, 133, 142, 0.04);
   }
@@ -97,9 +102,9 @@ const Sidebar = () => {
       <Logo>TEAMIC</Logo>
       <Nav>
         <MainMenu>
-          {menuLinks.map(({ route, icon, pending }) => (
-            <MainMenuRow>
-              <MainLink key={route}>
+          {menuLinks.map(({ route, icon, pending, active }) => (
+            <MainMenuRow className={active ? 'active' : ''} key={route}>
+              <MainLink>
                 {icon}
                 {route}
               </MainLink>
