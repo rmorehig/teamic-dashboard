@@ -86,8 +86,24 @@ const FilesIcon = (
 
 export const menuLinks = [
   { route: 'dashboard', icon: DashboardIcon },
-  { route: 'inbox', icon: InboxIcon },
+  { route: 'inbox', icon: InboxIcon, pending: 12 },
   { route: 'tasks', icon: TasksIcon },
   { route: 'conversations', icon: ConversationsIcon },
   { route: 'files', icon: FilesIcon },
+]
+
+export const projects = [
+  { id: 1, name: 'Annual Maintenance' },
+  { id: 2, name: 'Death Star Construction', starred: true },
+]
+
+export const teams = [
+  { id: 1, name: 'Engineering' },
+  { id: 2, name: 'Marketing' },
+  { id: 3, name: 'Marketing' },
+]
+
+export const integrations = [
+  { id: 1, name: 'Dropbox', update: false },
+  { id: 2, name: 'Mailchimp Forms', update: true },
 ]
