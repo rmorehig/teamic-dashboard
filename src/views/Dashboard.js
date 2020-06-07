@@ -1,6 +1,8 @@
 import React from 'react'
 import View from 'components/View'
 import styled from 'styled-components'
+import Table from 'components/Table'
+import { columns, data } from 'config/teams'
 
 const Button = styled.button`
   margin-left: 26px;
@@ -45,7 +47,11 @@ const DownloadButton = () => (
   </Button>
 )
 const Dashboard = () => {
-  return <View title="Teams" titleAction={<DownloadButton />}></View>
+  return (
+    <View title="Teams" titleAction={<DownloadButton />}>
+      <Table columns={columns} data={data} />
+    </View>
+  )
 }
 
 export default Dashboard

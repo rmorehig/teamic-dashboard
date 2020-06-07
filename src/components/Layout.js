@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import GlobalStyle from 'theme/Global'
 import Sidebar from 'components/Sidebar'
+import Normalize from 'theme/Normalize'
 
 const LayoutWrapper = styled.div`
   height: 100vh;
@@ -29,6 +30,7 @@ const Layout = ({ children }) => {
         <Main>{children}</Main>
       </Column>
       <GlobalStyle />
+      <Normalize />
     </LayoutWrapper>
   )
 }
