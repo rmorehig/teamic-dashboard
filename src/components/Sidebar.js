@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { menuLinks, projects, teams, integrations } from 'config/navigation'
+import { NavLink } from 'react-router-dom'
 const AddIcon = () => (
   <svg
     width="16"
@@ -24,8 +25,8 @@ const SidebarWrapper = styled.div`
   padding-top: 30px;
 `
 const Logo = styled.span`
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 32px;
   margin-left: 24px;
 `
 const Nav = styled.nav`
@@ -34,23 +35,36 @@ const Nav = styled.nav`
 const MainMenu = styled.ul``
 
 const MenuRow = styled.li`
-  cursor: pointer;
   padding: 4px 24px;
   text-transform: capitalize;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-left: 3px solid transparent;
-  &:hover,
-  .active {
-    color: #0b69ff;
+  a {
+    &:hover {
+      color: #0b69ff;
+    }
   }
 `
-const MainMenuRow = styled(MenuRow)`
-  &:hover,
-  .active {
-    border-color: #0b69ff;
-    background: rgba(126, 133, 142, 0.04);
+const MainMenuRow = styled.li`
+  a {
+    padding: 4px 24px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 3px solid transparent;
+    &:hover {
+      background: rgba(126, 133, 142, 0.04);
+    }
+    &:hover,
+    &.active {
+      border-color: #0b69ff;
+    }
+    &.active {
+      color: #0b69ff;
+    }
   }
 `
 const Button = styled.button`
@@ -61,7 +75,7 @@ const Button = styled.button`
   line-height: 16px;
   color: #7e858e;
 `
-const MainLink = styled.div`
+const FlexRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -102,13 +116,15 @@ const Sidebar = () => {
       <Logo>TEAMIC</Logo>
       <Nav>
         <MainMenu>
-          {menuLinks.map(({ route, icon, pending, active }) => (
-            <MainMenuRow className={active ? 'active' : ''} key={route}>
-              <MainLink>
-                {icon}
-                {route}
-              </MainLink>
-              {pending && <Pending>12</Pending>}
+          {menuLinks.map(({ route, icon, pending }) => (
+            <MainMenuRow>
+              <NavLink to={route} key={route} activeClassName="active">
+                <FlexRow>
+                  {icon}
+                  {route}
+                </FlexRow>
+                {pending && <Pending>12</Pending>}
+              </NavLink>
             </MainMenuRow>
           ))}
         </MainMenu>
@@ -117,15 +133,21 @@ const Sidebar = () => {
           {projects
             .filter(({ starred }) => starred)
             .map(({ id, name }) => (
-              <MenuRow key={id}>{name}</MenuRow>
+              <MenuRow key={id}>
+                <NavLink to={`/projects/${id}`}>{name}</NavLink>
+              </MenuRow>
             ))}
         </Menu>
         <Menu>
           <MenuTitle>Projects</MenuTitle>
           {projects.map(({ id, name }) => (
-            <MenuRow key={id}>{name}</MenuRow>
+            <MenuRow key={id}>
+              <NavLink to={`/projects/${id}`}>{name}</NavLink>
+            </MenuRow>
           ))}
-          <MenuRow>See all</MenuRow>
+          <MenuRow>
+            <NavLink to={`/projects`}>See all</NavLink>
+          </MenuRow>
           <MenuRow>
             <Button>
               <AddIcon />
@@ -136,9 +158,13 @@ const Sidebar = () => {
         <Menu>
           <MenuTitle>Teams</MenuTitle>
           {teams.map(({ id, name }) => (
-            <MenuRow key={id}>{name}</MenuRow>
+            <MenuRow key={id}>
+              <NavLink to={`/teams/${id}`}>{name}</NavLink>
+            </MenuRow>
           ))}
-          <MenuRow>See all</MenuRow>
+          <MenuRow>
+            <NavLink to={`/teams`}>See all</NavLink>
+          </MenuRow>
           <MenuRow>
             <Button>
               <AddIcon />
@@ -150,11 +176,14 @@ const Sidebar = () => {
           <MenuTitle>Integrations</MenuTitle>
           {integrations.map(({ id, name, update }) => (
             <MenuRow key={id}>
-              {name}
+              <NavLink to={`/integrations/${id}`}>{name}</NavLink>
               {update && <Warning>Update</Warning>}
             </MenuRow>
           ))}
-          <MenuRow>See all</MenuRow>
+          <MenuRow>
+            {' '}
+            <NavLink to={`/integrations`}>See all</NavLink>
+          </MenuRow>
           <MenuRow>
             <Button>
               <AddIcon />

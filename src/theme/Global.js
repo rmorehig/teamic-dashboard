@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     outline:none;
   }
   a {
+    color:inherit;
     text-decoration: none;
   }
   ul {

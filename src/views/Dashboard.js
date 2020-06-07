@@ -6,7 +6,7 @@ import { columns, data } from 'config/teams'
 
 const Button = styled.button`
   margin-left: 26px;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.01em;
