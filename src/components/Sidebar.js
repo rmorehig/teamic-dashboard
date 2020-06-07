@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { menuLinks, projects, teams, integrations } from 'config/navigation'
+import { menuLinks, projects, teams, integrations } from 'routes/routes'
 import { NavLink } from 'react-router-dom'
+import colors from 'theme/colors'
 const AddIcon = () => (
   <svg
     width="16"
@@ -36,7 +37,6 @@ const MainMenu = styled.ul``
 
 const MenuRow = styled.li`
   padding: 4px 24px;
-  text-transform: capitalize;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,13 +50,12 @@ const MenuRow = styled.li`
 const MainMenuRow = styled.li`
   a {
     padding: 4px 24px;
-    text-transform: capitalize;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-left: 3px solid transparent;
     &:hover {
-      background: rgba(126, 133, 142, 0.04);
+      background-color: ${colors.gray[50]};
     }
     &:hover,
     &.active {
@@ -116,12 +115,12 @@ const Sidebar = () => {
       <Logo>TEAMIC</Logo>
       <Nav>
         <MainMenu>
-          {menuLinks.map(({ route, icon, pending }) => (
+          {menuLinks.map(({ name, route, icon, pending }) => (
             <MainMenuRow>
               <NavLink to={route} key={route} activeClassName="active">
                 <FlexRow>
                   {icon}
-                  {route}
+                  {name}
                 </FlexRow>
                 {pending && <Pending>12</Pending>}
               </NavLink>

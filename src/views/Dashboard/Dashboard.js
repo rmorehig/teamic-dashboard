@@ -2,7 +2,7 @@ import React from 'react'
 import View from 'components/View'
 import styled from 'styled-components'
 import Table from 'components/Table'
-import { columns, data } from 'config/teams'
+import { columns, data } from 'views/Dashboard/columns'
 
 const Button = styled.button`
   margin-left: 26px;

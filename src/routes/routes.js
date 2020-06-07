@@ -85,11 +85,11 @@ const FilesIcon = (
 )
 
 export const menuLinks = [
-  { route: 'dashboard', icon: DashboardIcon, active: true },
-  { route: 'inbox', icon: InboxIcon, pending: 12 },
-  { route: 'tasks', icon: TasksIcon },
-  { route: 'conversations', icon: ConversationsIcon },
-  { route: 'files', icon: FilesIcon },
+  { name: 'Dashboard', route: '/dashboard', icon: DashboardIcon, active: true },
+  { name: 'Inbox', route: '/inbox', icon: InboxIcon, pending: 12 },
+  { name: 'Tasks', route: '/tasks', icon: TasksIcon },
+  { name: 'Conversations', route: '/conversations', icon: ConversationsIcon },
+  { name: 'Files', route: '/files', icon: FilesIcon },
 ]
 
 export const projects = [

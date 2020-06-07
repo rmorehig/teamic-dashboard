@@ -22,10 +22,18 @@ const TableWrapper = styled.table`
   border-left: 1px solid #d7dfe9;
 `
 const TableHeader = styled.thead``
-const TableRow = styled.tr``
+const TableRow = styled.tr`
+  &:hover {
+    background-color: ${colors.gray[50]};
+  }
+`
 const TableCell = styled.td`
   border-bottom: 1px solid #d7dfe9;
   padding: 18px 24px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${colors.gray[100]};
 `
 const TableHeaderCell = styled.th`
   border-top: 1px solid #d7dfe9;
@@ -73,8 +81,10 @@ const Table = ({ columns = [], data = [] }) => {
       <tbody>
         {data.map(row => (
           <TableRow key={row.id}>
-            {columns.map(({ id }) => (
-              <TableCell key={`${id}-${row.id}`}>{row[id]}</TableCell>
+            {columns.map(({ id, render }) => (
+              <TableCell key={`${id}-${row.id}`}>
+                {render ? render(row) : row[id]}
+              </TableCell>
             ))}
           </TableRow>
         ))}

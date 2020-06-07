@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
-import Dashboard from 'views/Dashboard'
+import Dashboard from 'views/Dashboard/Dashboard'
 import PrivateRoute from 'routes/PrivateRoute'
 
 function App() {
