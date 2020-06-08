@@ -6,6 +6,7 @@ import dropboxLogo from 'assets/dropbox.svg'
 import appleLogo from 'assets/apple.svg'
 import cocacolaLogo from 'assets/cocacola.svg'
 import { NavLink } from 'react-router-dom'
+import { getInitials } from 'utils/data'
 
 const Company = styled(NavLink)`
   display: flex;
@@ -37,7 +38,17 @@ const CompanyName = styled.span`
 const CompanyType = styled.span`
   font-weight: normal;
 `
-
+const Member = styled.div`
+  background-color: #ffbbd3;
+  color: #f13838;
+  border-radius: 100px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 11px;
+`
 const ActiveProyects = styled(Flex)`
   font-weight: 500;
   svg {
@@ -68,7 +79,7 @@ export const data = [
     type: 'Technology',
     activeProjects: 9,
     activeProjectsStatus: 'down',
-    members: 7,
+    members: [],
     logo: dropboxLogo,
   },
   {
@@ -77,7 +88,7 @@ export const data = [
     type: 'Technology',
     activeProjects: 4,
     activeProjectsStatus: 'down',
-    members: 16,
+    members: [],
     logo: appleLogo,
   },
   {
@@ -86,7 +97,7 @@ export const data = [
     type: 'Technology',
     activeProjects: 2,
     activeProjectsStatus: 'down',
-    members: 22,
+    members: ['John Smith', 'Martha Kent', 'Kal El'],
     logo: cocacolaLogo,
   },
 ]
@@ -99,7 +110,7 @@ export const columns = [
     render: ({ id, name, type, logo }) => (
       <Company to={`/teams/${id}`}>
         <CompanyLogo>
-          <img src={logo} />
+          <img src={logo} alt="company logo" />
         </CompanyLogo>
         <CompanyDescription>
           <CompanyName>{name}</CompanyName>
@@ -119,5 +130,15 @@ export const columns = [
       </ActiveProyects>
     ),
   },
-  { id: 'members', name: 'members' },
+  {
+    id: 'members',
+    name: 'members',
+    render: ({ members = [] }) => (
+      <Flex>
+        {members?.map(member => (
+          <Member>{getInitials(member)}</Member>
+        ))}
+      </Flex>
+    ),
+  },
 ]
